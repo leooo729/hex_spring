@@ -1,4 +1,4 @@
-package com.example.spring_hex_practive.service;
+package com.example.spring_hex_practive.service.queryService;
 
 import com.example.spring_hex_practive.controller.dto.response.GetTargetTrainResponse;
 import com.example.spring_hex_practive.controller.dto.response.TrainInfo;
@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface QueryService {
     GetTargetTrainResponse getTargetTrain(Integer trainNo) throws DataNotFoundException;
-
     List<TrainInfo> getTrainByStop(String stopName) throws DataNotFoundException;
 
 }

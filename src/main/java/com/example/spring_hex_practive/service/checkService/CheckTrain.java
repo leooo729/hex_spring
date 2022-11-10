@@ -1,12 +1,12 @@
-package com.example.spring_hex_practive.service;
+package com.example.spring_hex_practive.service.checkService;
 
 import com.example.spring_hex_practive.controller.dto.request.CreateTrainRequest;
-import com.example.spring_hex_practive.service.serviceRestTempleAPI.CheckResponse;
+import com.example.spring_hex_practive.service.util.SwitchTrainKind;
+import com.example.spring_hex_practive.service.outboundApiDto.CheckResponse;
 import com.example.spring_hex_practive.controller.dto.request.Stops;
 import com.example.spring_hex_practive.exception.CheckErrorException;
 import com.example.spring_hex_practive.exception.DataNotFoundException;
 import com.example.spring_hex_practive.model.TrainRepo;
-import com.example.spring_hex_practive.model.entity.Train;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +27,15 @@ public class CheckTrain {
     @Value("${checkTrainAvailableURL}")
     String checkTrainAvailableUrl;
 
-    public void checkTrainNoExist(List<Map<String, Object>> targetTrainNoAndTrainKindList) throws DataNotFoundException {
-        if (targetTrainNoAndTrainKindList.isEmpty()) {
+    public void checkTrainNoExist(List<Map<String, Object>> trainNameAndTimeList) throws DataNotFoundException {
+        if (trainNameAndTimeList.isEmpty()) {
             throw new DataNotFoundException("車次不存在");
+        }
+    }
+
+    public void checkTrainStopExist(List<Map<String, Object>> targetTrainNoAndTrainKindList) throws DataNotFoundException {
+        if (targetTrainNoAndTrainKindList.isEmpty()) {
+            throw new DataNotFoundException("站名不存在");
         }
     }
 
@@ -48,6 +54,7 @@ public class CheckTrain {
     }
 
     //-------------------------------------------------------------------------------------
+
     public void multipleTrainCheck(CreateTrainRequest request) throws CheckErrorException {
 
         List<Map<String, String>> errorList = new ArrayList<>();
@@ -117,6 +124,12 @@ public class CheckTrain {
             }
         }
     }
+    //-------------------------------------------------------------------------------all
+    public void createTrainCheck(CreateTrainRequest request, List<Stops> sortedStopsList) throws CheckErrorException {
+        checkTrainNoAvailable(request.getTrainNo());
+        multipleTrainCheck(request);
+        checkTrainStopsSorted(sortedStopsList);
+    }
 
     //-------------------------------------------------------------------------------method
     private Map<String, String> setErrorMessage(String code, String message) {
@@ -134,13 +147,3 @@ public class CheckTrain {
     }
 }
 
-//根據Postman輸入時間上至下為排序 做判斷
-//    public void checkTrainStopsSorted(List<Stops> stopsInfoList) throws CheckTrainException {
-//
-//        List<String> trainTimeList = stopsInfoList.stream().map(stop -> stop.getStop_time()).collect(Collectors.toList());
-//        List<String> sortedTrainTimeList = stopsInfoList.stream().map(stop -> stop.getStop_time()).sorted().collect(Collectors.toList());
-//
-//        if (!trainTimeList.equals(sortedTrainTimeList)) {
-//            throwCheckTrainException("TrainStopsNotSorted", "Train Stops is not sorted");
-//        }
-//    }

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TrainTicketRepo extends JpaRepository<TrainTicket, String> {
+    TrainTicket findByTicketNo(String ticketNo);
 }

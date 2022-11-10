@@ -1,10 +1,7 @@
 package com.example.spring_hex_practive.controller.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.Pattern;
 import java.time.LocalTime;
@@ -13,6 +10,7 @@ import java.time.LocalTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Stops {
     @JsonProperty(value = "stop_name")
     private String stopName;

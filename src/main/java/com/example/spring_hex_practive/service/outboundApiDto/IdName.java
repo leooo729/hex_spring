@@ -1,4 +1,4 @@
-package com.example.spring_hex_practive.service.serviceRestTempleAPI;
+package com.example.spring_hex_practive.service.outboundApiDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

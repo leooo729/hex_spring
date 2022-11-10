@@ -28,4 +28,13 @@ public class TrainTicket {
     private String takeDate;
     @Column(name = "PRICE")
     private Double price;
+
+    public TrainTicket(String ticketNo, String trainUuid, String fromStop, String toStop, String takeDate, Double price) {
+        this.ticketNo = ticketNo;
+        this.trainUuid = trainUuid;
+        this.fromStop = fromStop;
+        this.toStop = toStop;
+        this.takeDate = takeDate;
+        this.price = price;
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.spring_hex_practive.service;
+package com.example.spring_hex_practive.service.checkService;
 
 import com.example.spring_hex_practive.controller.dto.request.BuyTicketRequest;
 import com.example.spring_hex_practive.exception.CheckErrorException;
@@ -41,18 +41,18 @@ public class CheckTicket {
             throwCheckTicketException("StopsNameError", "Stop Name is Not Exist");
         }
     }
-//------------------------------------------------------------------------------method
-    private Map<String, String> setErrorMessage(String code, String message) {
-        Map<String, String> errorMessage = new HashMap<>();
-        errorMessage.put("code", code);
-        errorMessage.put("message", message);
-        return errorMessage;
+    public void buyTicketCheck(BuyTicketRequest request) throws CheckErrorException {
+        checkTrainNoNoExists(request.getTrainNo());
+        checkStopSeq(request);
     }
+//------------------------------------------------------------------------------method
 
     private void throwCheckTicketException(String code, String message) throws CheckErrorException {
         List<Map<String, String>> errorList = new ArrayList<>();
-        Map<String, String> map = setErrorMessage(code, message);
-        errorList.add(map);
+        Map<String, String> errorMessage = new HashMap<>();
+        errorMessage.put("code", code);
+        errorMessage.put("message", message);
+        errorList.add(errorMessage);
         throw new CheckErrorException(errorList);
     }
 }
