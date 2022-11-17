@@ -1,5 +1,6 @@
 package com.example.spring_hex_practive.domain.aggregate.domainService;
 
+import com.example.spring_hex_practive.domain.aggregate.entity.ErrorInfo;
 import com.example.spring_hex_practive.iface.dto.request.CreateTrainRequest;
 import com.example.spring_hex_practive.domain.aggregate.entity.Train;
 import com.example.spring_hex_practive.domain.aggregate.entity.TrainStop;

@@ -1,6 +1,6 @@
 package com.example.spring_hex_practive.domain.aggregate.domainService;
 
-import com.example.spring_hex_practive.domain.aggregate.domainService.ErrorInfo;
+import com.example.spring_hex_practive.domain.aggregate.entity.ErrorInfo;
 import com.example.spring_hex_practive.iface.dto.request.BuyTicketRequest;
 import com.example.spring_hex_practive.exception.CheckErrorException;
 import com.example.spring_hex_practive.infra.TrainRepo;
@@ -22,6 +22,7 @@ public class TicketCheckDomainService {
             throw new CheckErrorException(ErrorInfo.TrainNoNotExists);//"TrainNoNotExists", "Train No does not exists"
         }
     }
+
     public void checkStopSeq(BuyTicketRequest request) throws CheckErrorException {
         try {
             String trainUuid = trainRepo.findUuidByTrainNo(request.getTrainNo());
@@ -42,25 +43,4 @@ public class TicketCheckDomainService {
         checkTrainNoNoExists(request.getTrainNo());
         checkStopSeq(request);
     }
-//------------------------------------------------------------------------------method
-
-
-//    private void throwCheckTicketException(ErrorInfo errorInfo) throws CheckErrorException {
-//        List<Map<String, String>> errorList = new ArrayList<>();
-//        Map<String, String> errorMessage = new HashMap<>();
-//        errorMessage.put("code",errorInfo.getCode());
-//        errorMessage.put("message", errorInfo.getErrorMessage());
-//        errorList.add(errorMessage);
-//        throw new CheckErrorException(errorList);
-//    }
 }
-
-//
-//    private void throwCheckTicketException(String code, String message) throws CheckErrorException {
-//        List<Map<String, String>> errorList = new ArrayList<>();
-//        Map<String, String> errorMessage = new HashMap<>();
-//        errorMessage.put("code", code);
-//        errorMessage.put("message", message);
-//        errorList.add(errorMessage);
-//        throw new CheckErrorException(errorList);
-//    }

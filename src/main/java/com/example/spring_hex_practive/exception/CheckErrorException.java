@@ -1,6 +1,6 @@
 package com.example.spring_hex_practive.exception;
 
-import com.example.spring_hex_practive.domain.aggregate.domainService.ErrorInfo;
+import com.example.spring_hex_practive.domain.aggregate.entity.ErrorInfo;
 import lombok.*;
 
 import java.util.ArrayList;

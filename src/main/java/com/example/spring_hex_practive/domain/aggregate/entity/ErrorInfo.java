@@ -1,4 +1,4 @@
-package com.example.spring_hex_practive.domain.aggregate.domainService;
+package com.example.spring_hex_practive.domain.aggregate.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,8 +15,11 @@ public enum ErrorInfo {
     TrainStopsDuplicate("TrainStopsDuplicate", "Train Stops is duplicate"),
     TrainStopNameNoExists("TrainStopNameNoExists", "Train Stop Name is not exists"),
     TrainStopsNotSorted("TrainStopsNotSorted", "Train Stops is not sorted"),
-    TrainNoNotExistsCN("","車次不存在"),
-    TrainNameNotExistsCN("","站名不存在");
+    TrainNoNotExistsCN("TrainNoNotExistsCN","車次不存在"),
+    TrainNameNotExistsCN("TrainNameNotExistsCN","站名不存在")
+
+    ;
+
 
     private String code;
     private String errorMessage;

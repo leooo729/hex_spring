@@ -1,6 +1,5 @@
 package com.example.spring_hex_practive.domain.aggregate.entity;
 
-import com.example.spring_hex_practive.domain.aggregate.domainService.ErrorInfo;
 import com.example.spring_hex_practive.iface.dto.request.CreateTrainRequest;
 import com.example.spring_hex_practive.iface.dto.request.Stops;
 import com.example.spring_hex_practive.exception.CheckErrorException;
@@ -42,6 +41,7 @@ public class Train {
     }
 
     public static Train create(CreateTrainRequest request, String uuid) {
+        //check放這
         return new Train(request, uuid);
     }
     //--------------------------------------------------------------------------------------

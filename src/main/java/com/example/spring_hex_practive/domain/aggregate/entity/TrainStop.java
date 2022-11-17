@@ -1,6 +1,5 @@
 package com.example.spring_hex_practive.domain.aggregate.entity;
 
-import com.example.spring_hex_practive.domain.aggregate.domainService.ErrorInfo;
 import com.example.spring_hex_practive.iface.dto.request.CreateTrainRequest;
 import com.example.spring_hex_practive.iface.dto.request.Stops;
 import com.example.spring_hex_practive.exception.CheckErrorException;
@@ -35,9 +34,11 @@ public class TrainStop {
     private LocalTime time;
     @Column(name = "DELETE_FLAG")
     private String deleteFlag;
+
 //----------------------------------------------------------------------
 
     private TrainStop(String stopUuid, String trainUuid, Stops stop, int seq) {
+
         this.uuid = stopUuid;
         this.trainUuid = trainUuid;
         this.seq = seq;

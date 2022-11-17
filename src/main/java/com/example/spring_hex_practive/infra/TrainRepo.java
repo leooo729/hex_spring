@@ -14,8 +14,6 @@ public interface TrainRepo extends JpaRepository<Train, String> {
 
     Train findByUuid(String uuid);
 
-    List<Train> findByTrainKind(String trainKind);
-
     // TODO: Q2 多表查詢
     @Query(value = "SELECT TRAIN_NO,TRAIN_KIND FROM TRAIN INNER JOIN TRAIN_STOP ON TRAIN.UUID=TRAIN_STOP.TRAIN_UUID WHERE TRAIN_STOP.NAME=?1 ORDER BY TIME ASC", nativeQuery = true)
     List<Map<String, Object>> findTrainNoAndTrainKind(String stopName);
