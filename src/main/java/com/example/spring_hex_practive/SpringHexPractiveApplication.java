@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication
 public class SpringHexPractiveApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(SpringHexPractiveApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringHexPractiveApplication.class, args);
+    }
 
 }
